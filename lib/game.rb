@@ -47,8 +47,7 @@ class TicTacToe
 
   def play
     loop do
-      clear_terminal
-      board.draw
+      display_game_screen
       print "\nMake your move: "
       @move = current_player.make_move
       if legal?
