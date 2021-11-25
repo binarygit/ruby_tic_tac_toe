@@ -7,7 +7,8 @@ require 'pry-byebug'
 
 class TicTacToe
   include Rules
-  attr_reader :player_one, :player_two, :markers_array, :board, :current_player, :move
+  attr_accessor :current_player, :move, :markers_array
+  attr_reader :player_one, :player_two, :board
 
   def initialize
     @markers_array = Array.new(9) {|i| i + 1}
