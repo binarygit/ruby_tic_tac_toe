@@ -30,7 +30,7 @@ class TicTacToe
   end
 
   def open
-    display_description
+    display_game_screen
     create_players
   end
 
@@ -86,9 +86,8 @@ class TicTacToe
   end
 
   def display_description
-    clear_terminal
     puts "\n Welcome to Tic Tac Toe"
-    puts " A CLI game made in Ruby\n\n"
+    puts " A CLI game made in Ruby"
   end
 
   def clear_terminal
@@ -125,12 +124,13 @@ class Board
 
   def create
     <<-BOARD
-    \n
+    
   #{markers_array[0]}  |  #{markers_array[1]}  |  #{markers_array[2]}
  +++++++++++++++
   #{markers_array[3]}  |  #{markers_array[4]}  |  #{markers_array[5]}
  +++++++++++++++
   #{markers_array[6]}  |  #{markers_array[7]}  |  #{markers_array[8]}
+
     BOARD
   end
 end
