@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 require_relative 'string'
 require_relative 'rules'
+require_relative 'player'
 require 'pry-byebug'
 
 class TicTacToe
@@ -75,21 +76,6 @@ class TicTacToe
 
   def clear_terminal
     system("cls") || system("clear")
-  end
-end
-
-class Player
-  attr_accessor :name
-  attr_reader :marker
-
-  def initialize(marker, name = nil)
-    print " What is the name of Player 1? whose marker is #{marker}: "
-    @marker = marker
-    @name = name.nil? ? gets.chomp : name
-  end
-
-  def make_move
-    gets.chomp
   end
 end
 
