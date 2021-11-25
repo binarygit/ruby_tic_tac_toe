@@ -8,11 +8,17 @@ module Rules
   end
 
   def win?
+    # rows
     return true if markers_array[0..2].uniq == [current_player.marker]
     return true if markers_array[3..5].uniq == [current_player.marker]
     return true if markers_array[6..8].uniq == [current_player.marker]
-    # return true if (markers_array[2] + markers_array[4] + markers_array[6]).uniq == [current_player.marker]
-    # return true if (markers_array[0] + markers_array[4] + markers_array[8]).uniq == [current_player.marker]
+    # diagonals
+    return true if ([markers_array[2]] + [markers_array[4]] + [markers_array[6]]).uniq == [current_player.marker]
+    return true if ([markers_array[0]] + [markers_array[4]] + [markers_array[8]]).uniq == [current_player.marker]
+    # columns
+    return true if ([markers_array[0]] + [markers_array[3]] + [markers_array[6]]).uniq == [current_player.marker]
+    return true if ([markers_array[1]] + [markers_array[4]] + [markers_array[7]]).uniq == [current_player.marker]
+    return true if ([markers_array[2]] + [markers_array[5]] + [markers_array[8]]).uniq == [current_player.marker]
   end
 
   def draw?
@@ -34,17 +40,6 @@ class TicTacToe
     create_players
   end
 
-  def display_game_screen
-    clear_terminal
-    display_description
-    board.draw
-  end
-
-  def create_players
-    @player_one = @current_player = Player.new('X'.red)
-    @player_two = Player.new('O'.green)
-  end
-
   def play
     loop do
       display_game_screen
@@ -60,11 +55,20 @@ class TicTacToe
 
   private
 
-  def end_game
-    display_game_screen
-    puts " Yaaaayyyyy!! The winner is: #{current_player.name}" if win?
-    puts " Oh! it's just a draw!" if draw?
-    exit
+  def display_game_screen
+    clear_terminal
+    display_description
+    board.draw
+  end
+
+  def display_description
+    puts "\n Welcome to Tic Tac Toe"
+    puts " A CLI game made in Ruby"
+  end
+
+  def create_players
+    @player_one = @current_player = Player.new('X'.red)
+    @player_two = Player.new('O'.green)
   end
 
   def mark
@@ -85,9 +89,11 @@ class TicTacToe
     @current_player = player_two
   end
 
-  def display_description
-    puts "\n Welcome to Tic Tac Toe"
-    puts " A CLI game made in Ruby"
+  def end_game
+    display_game_screen
+    puts " Yaaaayyyyy!! The winner is: #{current_player.name}" if win?
+    puts " Oh! it's just a draw!" if draw?
+    exit
   end
 
   def clear_terminal
