@@ -34,6 +34,12 @@ class TicTacToe
     create_players
   end
 
+  def display_game_screen
+    clear_terminal
+    display_description
+    board.draw
+  end
+
   def create_players
     @player_one = @current_player = Player.new('X'.red)
     @player_two = Player.new('O'.green)
