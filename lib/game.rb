@@ -25,8 +25,8 @@ class TicTacToe
   attr_reader :player_one, :player_two, :markers_array, :board, :current_player, :move
 
   def initialize
-    @board = Board.new
-    @markers_array = board.markers_array
+    @markers_array = Array.new(9) {|i| i + 1}
+    @board = Board.new(markers_array)
   end
 
   def open
@@ -42,7 +42,7 @@ class TicTacToe
   def play
     loop do
       clear_terminal
-      board.display
+      board.draw
       print "\nMake your move: "
       @move = current_player.make_move
       if legal?
@@ -57,7 +57,7 @@ class TicTacToe
 
   def end_game
     clear_terminal
-    board.display
+    board.draw
     exit
   end
 
@@ -108,12 +108,17 @@ end
 class Board
   attr_accessor :markers_array
 
-  def initialize
-    @markers_array = Array.new(9) { |i| i + 1 }
+  def initialize(markers_array = nil)
+    @markers_array = markers_array
   end
 
-  def display
-    puts <<-BOARD
+  def draw
+    return 'no markers array provided' if markers_array.nil?
+    puts create
+  end
+
+  def create
+    <<-BOARD
     \n
   #{markers_array[0]}  |  #{markers_array[1]}  |  #{markers_array[2]}
  +++++++++++++++
