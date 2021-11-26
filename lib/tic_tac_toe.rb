@@ -11,7 +11,7 @@ class TicTacToe
   attr_reader :player_one, :player_two, :board
 
   def initialize
-    @markers_array = Array.new(9) {|i| i + 1}
+    @markers_array = Array.new(9) { |i| i + 1 }
     @board = Board.new(markers_array)
   end
 
@@ -26,21 +26,23 @@ class TicTacToe
       print "\n #{current_player.name}, Make your move: "
       @move = current_player.make_move
       if legal?
-      mark
-      (return game_over) if game_over_conditions_met?
-      set_current_player
+        mark
+        (return game_over) if game_over_conditions_met?
+        set_current_player
       end
     end
   end
 
   private
+
   def verdict_message
-   return " Yaaaayyyyy!! The winner is: #{current_player.name}\n" if verdict == 'win'
-   return " Oh! it's just a draw!\n" if verdict == 'draw'
+    return " Yaaaayyyyy!! The winner is: #{current_player.name}\n" if verdict == 'win'
+    return " Oh! it's just a draw!\n" if verdict == 'draw'
   end
 
   def game_over_conditions_met?
     return true if verdict
+
     return false
   end
 
