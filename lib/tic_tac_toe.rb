@@ -23,11 +23,11 @@ class TicTacToe
   def play
     loop do
       display_game_screen
-      print "\n Make your move: "
+      print "\n #{current_player.name}, Make your move: "
       @move = current_player.make_move
       if legal?
       mark
-      (end_game) if (win? || draw?)
+      (end_game) if end_condition?
       set_current_player
       end
     end
@@ -48,9 +48,9 @@ class TicTacToe
 
   def create_players
     print " What is the name of Player 1? whose marker is #{'X'.red}: "
-    @player_one = @current_player = Player.new('X'.red, gets.chomp.red)
+    @player_one = @current_player = Player.new('X'.red, gets.chomp.capitalize.red)
     print " What is the name of Player 2? whose marker is #{'O'.green}: "
-    @player_two = Player.new('O'.green, gets.chomp.green)
+    @player_two = Player.new('O'.green, gets.chomp.capitalize.green)
   end
 
   def mark
@@ -73,8 +73,9 @@ class TicTacToe
 
   def end_game
     display_game_screen
-    (puts " Yaaaayyyyy!! The winner is: #{current_player.name}"; exit) if win?
-    (puts " Oh! it's just a draw!"; exit) if draw?
+    (puts " Yaaaayyyyy!! The winner is: #{current_player.name}") if end_condition? == 'win'
+    (puts " Oh! it's just a draw!") if end_condition? == 'draw'
+    exit
   end
 
   def clear_terminal
