@@ -27,13 +27,22 @@ class TicTacToe
       @move = current_player.make_move
       if legal?
       mark
-      (end_game) if end_condition?
+      (end_game) if game_over_conditions_met?
       set_current_player
       end
     end
   end
 
   private
+  def verdict_message
+   return " Yaaaayyyyy!! The winner is: #{current_player.name}\n" if verdict == 'win'
+   return " Oh! it's just a draw!\n" if verdict == 'draw'
+  end
+
+  def game_over_conditions_met?
+    return true if verdict
+    return false
+  end
 
   def display_game_screen
     clear_terminal
@@ -73,8 +82,7 @@ class TicTacToe
 
   def end_game
     display_game_screen
-    (puts " Yaaaayyyyy!! The winner is: #{current_player.name}") if end_condition? == 'win'
-    (puts " Oh! it's just a draw!") if end_condition? == 'draw'
+    puts verdict_message
     exit
   end
 

@@ -5,7 +5,7 @@ module Rules
     markers_array[move.to_i - 1] == move.to_i
   end
 
-  def end_condition?
+  def verdict
     # rows
     return 'win' if markers_array[0..2].uniq == [current_player.marker]
     return 'win' if markers_array[3..5].uniq == [current_player.marker]
