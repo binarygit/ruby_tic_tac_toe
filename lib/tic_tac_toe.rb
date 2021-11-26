@@ -27,7 +27,7 @@ class TicTacToe
       @move = current_player.make_move
       if legal?
       mark
-      (end_game) if game_over_conditions_met?
+      (return game_over) if game_over_conditions_met?
       set_current_player
       end
     end
@@ -80,10 +80,9 @@ class TicTacToe
     @current_player = player_two
   end
 
-  def end_game
+  def game_over
     display_game_screen
     puts verdict_message
-    exit
   end
 
   def clear_terminal
