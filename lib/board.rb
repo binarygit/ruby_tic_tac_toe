@@ -8,11 +8,11 @@ class Board
   end
 
   def draw
-    return 'no markers array provided' if markers_array.nil?
     puts create
   end
 
   def create
+    return 'no markers array provided' if markers_array.nil?
     <<-BOARD
     
   #{markers_array[0]}  |  #{markers_array[1]}  |  #{markers_array[2]}
