@@ -4,10 +4,9 @@ class Player
   attr_accessor :name
   attr_reader :marker
 
-  def initialize(marker, name = nil)
-    print " What is the name of Player 1? whose marker is #{marker}: "
+  def initialize(marker, name)
     @marker = marker
-    @name = name.nil? ? gets.chomp : name
+    @name = name
   end
 
   def make_move
