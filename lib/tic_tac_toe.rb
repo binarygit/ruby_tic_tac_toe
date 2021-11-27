@@ -11,8 +11,8 @@ class TicTacToe
   attr_reader :player_one, :player_two, :board
 
   def initialize
-    @markers_array = Array.new(9) { |i| i + 1 }
-    @board = Board.new(markers_array)
+    @board = Board.new
+    @markers_array = board.markers_array
   end
 
   def open
@@ -26,7 +26,7 @@ class TicTacToe
       print "\n #{current_player.name}, Make your move: "
       @move = current_player.make_move
       if legal?
-        mark
+        board.mark(current_player.marker, @move)
         (return game_over) if game_over_conditions_met?
         set_current_player
       end
@@ -62,18 +62,6 @@ class TicTacToe
     @player_one = @current_player = Player.new('X'.red, gets.chomp.capitalize.red)
     print " What is the name of Player 2? whose marker is #{'O'.green}: "
     @player_two = Player.new('O'.green, gets.chomp.capitalize.green)
-  end
-
-  def mark
-    marker = current_player.marker
-
-    index_to_insert = move.to_i - 1
-    index_to_delete = index_to_insert + 1
-
-    markers_array.insert(index_to_insert, marker)
-    markers_array.delete(index_to_delete)
-
-    board.markers_array = markers_array
   end
 
   def set_current_player

@@ -3,8 +3,8 @@
 class Board
   attr_accessor :markers_array
 
-  def initialize(markers_array = nil)
-    @markers_array = markers_array
+  def initialize
+    @markers_array = Array.new(9) {|i| i + 1}
   end
 
   def draw
@@ -23,4 +23,13 @@ class Board
 
     BOARD
   end
+
+  def mark(marker, move)
+    index_to_insert = move.to_i - 1
+    index_to_delete = index_to_insert + 1
+
+    markers_array.insert(index_to_insert, marker)
+    markers_array.delete(index_to_delete)
+  end
+
 end
