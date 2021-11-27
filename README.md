@@ -2,6 +2,8 @@
 
 This is a simple Tic Tac Toe game that I made using ruby.
 
+You can play it by cloning it into your machine and running `ruby lib/main.rb` or play it here: https://replit.com/@binarygit/rubytictactoe#.replit
+
 I wanted to get better at writing OO code, and get familiar with Testing which is why I wrote this program. I think that I still have space to improve as I donot belive I've uncovered most of the abstractions the code holds. However, I have learned tons about program design and code arrangement. Many times while writing this, I thought perhaps a more procedural or functional approach would have been appropriate for writing this program. But as I was trying to practice OOP, I have tried to keep the code as faithful to OO as I could.
 
 ![main_menu](https://user-images.githubusercontent.com/87677429/143662036-03277437-4053-4b7b-8701-f87a650016ac.png)
