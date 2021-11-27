@@ -48,13 +48,10 @@ class TicTacToe
 
   def display_game_screen
     clear_terminal
-    display_description
-    board.draw
-  end
-
-  def display_description
     puts "\n Welcome to Tic Tac Toe"
     puts " A CLI game made in Ruby"
+    display_description
+    board.draw
   end
 
   def create_players
