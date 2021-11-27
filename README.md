@@ -31,7 +31,7 @@ The game employs tests on the two most important methods which are legal? and ve
 
 # What I Learned
 * Testing with Rspec 
-* How to think in terms of objects and messages
+* That I still have some way to go inorder to master OOP, and that this was the right direction
 
 
 
