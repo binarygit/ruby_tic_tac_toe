@@ -50,7 +50,6 @@ class TicTacToe
     clear_terminal
     puts "\n Welcome to Tic Tac Toe"
     puts " A CLI game made in Ruby"
-    display_description
     board.draw
   end
 
