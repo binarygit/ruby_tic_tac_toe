@@ -25,7 +25,7 @@ class Game
   end
 
   def new_game
-    @match = TicTacToe.new
+    @match = Match.new
     match.assign_players
     match.play
   end
@@ -59,7 +59,6 @@ class Game
   def clear_terminal
     system('clear') || system('cls')
   end
-
 
   def assign_players
     # display_game_screen
