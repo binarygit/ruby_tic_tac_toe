@@ -4,24 +4,31 @@ This is a simple Tic Tac Toe game that I made using ruby.
 
 You can play it by cloning it into your machine and running `ruby lib/game.rb` or play it here: https://replit.com/@binarygit/tictactoe#.replit
 
-I wanted to get better at writing OO code, and get familiar with Testing which is why I wrote this program. I think that I still have space to improve as I donot belive I've uncovered most of the abstractions the code holds. However, I have learned tons about program design and code arrangement. Many times while writing this, I thought perhaps a more procedural or functional approach would have been appropriate for writing this program. But as I was trying to practice OOP, I have tried to keep the code as faithful to OO as I could.
+I wanted to get better at writing OO code, and get familiar with Testing which is why I wrote this program. 
+It was only after I had my first working draft that I realized, I was using higher abstractions. What do I mean by that? Well I had a single class called TicTacToe which did most of the heavy lifting. It not only displayed the main menu, but initialized the players and saved/loaded a game. I broke the class up into: Match and Game.
+
+It is inside the Game of TicTacToe that a Match of TicTacToe is played. That distinction helped me send more messages from one to the other and get out of my 'functional' mindset.
 
 ![main_menu](https://user-images.githubusercontent.com/87677429/143662036-03277437-4053-4b7b-8701-f87a650016ac.png)
+
 
 ![game_scr](https://user-images.githubusercontent.com/87677429/143662112-1afdba2a-08f9-4bba-ab2e-d5ba00b010c4.png) 
 ![game_scr1](https://user-images.githubusercontent.com/87677429/143662202-9579481d-0bf5-4c96-96c3-d63e100bba5a.png)
 
 # Functionality
 
-The main functionality that I wrote is the Play method, which ties the Board and Player object together and makes it possible to play the game. 
+The major fuctionalities of the game include:
 
-As you can see, it is a simple infinite loop, it uses this instead of a finite loop that could also keep track of (say) num_of_turns because I didn't want the method to do too many things. It already does enough. The legal? method which is included in the Rules module tells play to not mark an illegal move. Thus an invalid move is treated like it never happened and so makes it unnecessary to track the number of moves. 
+* Save/Load function
 
-The game ends when, the game_over_conditions (win or draw, which verdict method handles) are met.
+![save](https://user-images.githubusercontent.com/87677429/144435405-c398354d-24e6-46f5-b362-abfe60b24108.gif)
+![load](https://user-images.githubusercontent.com/87677429/144435517-9b8737d2-87cb-4526-8d7a-536c65d50a19.gif)
 
-![play](https://user-images.githubusercontent.com/87677429/143662417-dc0a511a-df58-4443-a308-cfa25fbb4224.png)
+* Play Again function
 
-The red and green markers as you see in the ss have been made by modifying the String class.
+![play_again](https://user-images.githubusercontent.com/87677429/144435559-a058cd04-8d04-48a1-9333-ada3a9aec54a.gif)
+
+(And if you were wondering) The red and green markers as you see in the screen shots have been made by modifying the String class.
 
 ![string](https://user-images.githubusercontent.com/87677429/143662936-4fb7467b-1622-428e-bb29-3817582888c8.png)
 
@@ -31,7 +38,7 @@ The game employs tests on the two most important methods which are legal? and ve
 
 # What I Learned
 * Testing with Rspec 
-* That I still have some way to go inorder to master OOP, and that this was the right direction
+* That OOP is fundamentally about uncovering abstractions and using them to send messages inorder to create programs
 
 
 
