@@ -1,4 +1,4 @@
-require './lib/tic_tac_toe'
+require './lib/match'
 
 describe Match do
   let(:red_marker) { "\e[31mX\e[0m" }

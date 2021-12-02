@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
-require_relative 'tic_tac_toe'
+require_relative 'match'
 
 class Game
   attr_reader :match
