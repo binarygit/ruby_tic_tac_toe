@@ -5,7 +5,7 @@ class Game
   attr_reader :match
 
   def initialize
-    @match = TicTacToe.new
+    @match = Match.new
   end
 
   def open

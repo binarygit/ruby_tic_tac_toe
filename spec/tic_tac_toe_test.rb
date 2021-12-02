@@ -1,6 +1,6 @@
 require './lib/tic_tac_toe'
 
-describe TicTacToe do
+describe Match do
   let(:red_marker) { "\e[31mX\e[0m" }
   let(:green_marker) { "\e[32m0\e[0m" }
 

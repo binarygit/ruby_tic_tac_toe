@@ -5,7 +5,7 @@ require_relative 'player'
 require_relative 'board'
 require 'pry-byebug'
 
-class TicTacToe
+class Match
   include Rules
   attr_accessor :current_player, :move, :markers_array, :player_one, :player_two
   attr_reader :board
