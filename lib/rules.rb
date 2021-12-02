@@ -2,7 +2,11 @@
 
 module Rules
   def legal?
-    markers_array[move.to_i - 1] == move.to_i
+    markers_array[index] == move.to_i
+  end
+
+  def index
+    move.to_i - 1
   end
 
   def verdict
