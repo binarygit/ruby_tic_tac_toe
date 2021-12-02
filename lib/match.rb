@@ -5,11 +5,10 @@ require_relative 'player'
 require_relative 'board'
 require_relative 'save'
 require_relative 'load'
-require 'pry-byebug'
 
 class Match
   include Rules
-  include SaveGame
+  include Save
   include Load
   attr_accessor :current_player, :move, :markers_array, :player_one, :player_two
   attr_reader :board

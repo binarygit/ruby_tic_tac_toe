@@ -1,5 +1,4 @@
 #!/usr/bin/ruby
-require 'pry-byebug'
 
 module Load
   def load
@@ -7,6 +6,16 @@ module Load
     Dir.children('saved_games').each_with_index { |file, index| puts " #{'-'} #{file}" }
     file_name = get_file_name
     unserialize(file_name)
+  end
+
+  def unserialize(file_name)
+    file_name = 'saved_games/' + file_name
+    File.open(file_name) do |file|
+      obj = Marshal.load(file)
+      obj.keys.each do |key|
+        instance_variable_set(key, obj[key])
+      end
+    end
   end
 
   def get_file_name
@@ -22,15 +31,5 @@ module Load
   def exist?(file)
     Dir.children('saved_games').each { |f| return true if f == file }
     return false
-  end
-
-  def unserialize(file_name)
-    file_name = 'saved_games/' + file_name
-    File.open(file_name) do |file|
-      obj = Marshal.load(file)
-      obj.keys.each do |key|
-        instance_variable_set(key, obj[key])
-      end
-    end
   end
 end

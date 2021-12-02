@@ -1,7 +1,6 @@
 #!/usr/bin/ruby
-require 'pry-byebug'
 
-module SaveGame
+module Save
   def save
     puts "\n If there are any save game files they will be listed below: \n\n"
     Dir.children('saved_games').each_with_index { |file, index| puts " #{'-'} #{file}" }
