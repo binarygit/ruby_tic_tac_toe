@@ -26,7 +26,7 @@ class Match
   def play
     loop do
       display_game_screen
-      print "\n #{current_player.name}, Make your move: "
+      print "\n #{current_player.name}, Make your move (type 'save' to save the game): "
       @move = current_player.make_move
       save if move == special_keyword
       if legal?

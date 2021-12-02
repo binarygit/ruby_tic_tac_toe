@@ -5,7 +5,7 @@ module Save
     puts "\n If there are any save game files they will be listed below: \n\n"
     display_saved_files if Dir.exist?('saved_games')
     puts "\n If you would like to create a new save file or overwrite one, write its name "
-    print "\n Enter file name or number: "
+    print "\n Enter file name: "
     file_name = gets.chomp
     serialize(file_name)
   end
