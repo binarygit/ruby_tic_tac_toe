@@ -77,4 +77,5 @@ class Game
   end
 end
 
-Game.new.open
+tictactoe = Game.new
+tictactoe.open
