@@ -27,7 +27,7 @@ class Match
       @move = current_player.make_move
       if legal?
         board.mark(current_player.marker, @move)
-        (return game_over) if game_over_conditions_met?
+        (return match_over) if match_over_conditions_met?
         set_current_player
       end
     end
@@ -40,7 +40,7 @@ class Match
     return " Oh! it's just a draw!\n" if verdict == 'draw'
   end
 
-  def game_over_conditions_met?
+  def match_over_conditions_met?
     return true if verdict
 
     return false
@@ -59,7 +59,7 @@ class Match
     @current_player = player_two
   end
 
-  def game_over
+  def match_over
     display_game_screen
     puts verdict_message
   end
