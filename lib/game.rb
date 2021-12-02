@@ -18,7 +18,7 @@ class Game
 
         # if input is 2 but save_game doesn't exist
         (print " No saved games to load from\n") if input == '2' && !save_game_exist?
-        (print " Saved games\n"; break) if input == '2' && save_game_exist?
+        (load_match; break) if input == '2' && save_game_exist?
       end
       break unless play_again?
     end
@@ -30,8 +30,8 @@ class Game
     match.play
   end
 
-  def load_saved_game
-    load_game
+  def load_match
+    match.load
     match.play
   end
 
@@ -67,7 +67,9 @@ class Game
   end
 
   def save_game_exist?
-    false
+    return false unless Dir.exist?('saved_games')
+    return false if Dir.empty?('saved_games')
+    return true
   end
 
   def clear_terminal

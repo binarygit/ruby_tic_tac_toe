@@ -3,10 +3,14 @@ require_relative 'string'
 require_relative 'rules'
 require_relative 'player'
 require_relative 'board'
+require_relative 'save'
+require_relative 'load'
 require 'pry-byebug'
 
 class Match
   include Rules
+  include SaveGame
+  include Load
   attr_accessor :current_player, :move, :markers_array, :player_one, :player_two
   attr_reader :board
 
@@ -25,6 +29,7 @@ class Match
       display_game_screen
       print "\n #{current_player.name}, Make your move: "
       @move = current_player.make_move
+      save if move == special_keyword
       if legal?
         board.mark(current_player.marker, @move)
         (return match_over) if match_over_conditions_met?
@@ -34,6 +39,10 @@ class Match
   end
 
   private
+
+  def special_keyword
+    'save'
+  end
 
   def verdict_message
     return " Yaaaayyyyy!! The winner is: #{current_player.name}\n" if verdict == 'win'
