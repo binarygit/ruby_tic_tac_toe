@@ -7,8 +7,8 @@ require 'pry-byebug'
 
 class TicTacToe
   include Rules
-  attr_accessor :current_player, :move, :markers_array
-  attr_reader :player_one, :player_two, :board
+  attr_accessor :current_player, :move, :markers_array, :player_one, :player_two
+  attr_reader :board
 
   def initialize
     @board = Board.new
@@ -33,6 +33,13 @@ class TicTacToe
     end
   end
 
+  def assign_players
+    display_game_screen
+    print " What is the name of Player 1? whose marker is #{'X'.red}: "
+    @player_one = @current_player = Player.new('X'.red, gets.chomp.capitalize.red)
+    print " What is the name of Player 2? whose marker is #{'O'.green}: "
+    @player_two = Player.new('O'.green, gets.chomp.capitalize.green)
+  end
   private
 
   def verdict_message
@@ -51,13 +58,6 @@ class TicTacToe
     puts "\n Welcome to Tic Tac Toe"
     puts " A CLI game made in Ruby"
     board.draw
-  end
-
-  def create_players
-    print " What is the name of Player 1? whose marker is #{'X'.red}: "
-    @player_one = @current_player = Player.new('X'.red, gets.chomp.capitalize.red)
-    print " What is the name of Player 2? whose marker is #{'O'.green}: "
-    @player_two = Player.new('O'.green, gets.chomp.capitalize.green)
   end
 
   def set_current_player

@@ -26,19 +26,35 @@ def clear_terminal
   system('clear') || system('cls')
 end
 
-loop do
+def new_game
   tic_tac_toe = TicTacToe.new
+  tic_tac_toe.assign_players
+  tic_tac_toe.play
+end
+
+def assign_players
+  # display_game_screen
+  print " What is the name of Player 1? whose marker is #{'X'.red}: "
+  tic_tac_toe.player_one = tic_tac_toe.current_player = Player.new('X'.red, gets.chomp.capitalize.red)
+  print " What is the name of Player 2? whose marker is #{'O'.green}: "
+  tic_tac_toe.player_two = Player.new('O'.green, gets.chomp.capitalize.green)
+end
+
+def load_saved_game
+  load_game
+  tic_tac_toe.play
+end
+
+loop do
   display_main_menu
   loop do
     print "\n Input: "
     input = gets.chomp
-    break if input == '1'
+    (new_game; break) if input == '1'
 
     # if input is 2 but save_game doesn't exist
     (print " No saved games to load from\n") if input == '2' && !save_game_exist?
-    (print " Saved games\n") if input == '2' && save_game_exist?
+    (print " Saved games\n"; break) if input == '2' && save_game_exist?
   end
-  tic_tac_toe.open
-  tic_tac_toe.play
   break unless play_again?
 end
