@@ -26,13 +26,27 @@ class Game
 
   def new_game
     @match = Match.new
-    match.assign_players
+    assign_players
     match.play
   end
 
   def load_saved_game
     load_game
     match.play
+  end
+
+  private
+
+  def assign_players
+    clear_terminal
+    board = Board.new
+    print "\n Welcome to Tic Tac Toe" +
+          "\n A CLI game made in Ruby\n"
+    board.draw
+    print " What is the name of Player 1? whose marker is #{'X'.red}: "
+    match.player_one = match.current_player = Player.new('X'.red, gets.chomp.capitalize.red)
+    print " What is the name of Player 2? whose marker is #{'O'.green}: "
+    match.player_two = Player.new('O'.green, gets.chomp.capitalize.green)
   end
 
   def play_again?
@@ -44,10 +58,6 @@ class Game
     return false
   end
 
-  def save_game_exist?
-    false
-  end
-
   def display_main_menu
     clear_terminal
     print "\n Welcome to Tic Tac Toe" +
@@ -56,18 +66,13 @@ class Game
           "\n 2) Load Game\n\n"
   end
 
-  def clear_terminal
-    system('clear') || system('cls')
+  def save_game_exist?
+    false
   end
 
-  def assign_players
-    # display_game_screen
-    print " What is the name of Player 1? whose marker is #{'X'.red}: "
-    match.player_one = match.current_player = Player.new('X'.red, gets.chomp.capitalize.red)
-    print " What is the name of Player 2? whose marker is #{'O'.green}: "
-    match.player_two = Player.new('O'.green, gets.chomp.capitalize.green)
+  def clear_terminal
+    system('clear') || system('cls')
   end
 end
 
 Game.new.open
-

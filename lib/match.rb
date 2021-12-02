@@ -33,13 +33,6 @@ class Match
     end
   end
 
-  def assign_players
-    display_game_screen
-    print " What is the name of Player 1? whose marker is #{'X'.red}: "
-    @player_one = @current_player = Player.new('X'.red, gets.chomp.capitalize.red)
-    print " What is the name of Player 2? whose marker is #{'O'.green}: "
-    @player_two = Player.new('O'.green, gets.chomp.capitalize.green)
-  end
   private
 
   def verdict_message
